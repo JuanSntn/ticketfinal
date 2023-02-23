@@ -53,8 +53,10 @@
 </nav>
 
 <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
+
 @yield('body')
 </body>
-<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
 
 </html>
