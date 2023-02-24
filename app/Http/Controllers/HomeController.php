@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\tickets;
 use App\Models\Usuarios;
 use App\Models\departamentos;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +33,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $users = User::all();
+        $users = tickets::all();
         
 
         return view('home', compact('users'));
@@ -98,9 +99,9 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'required',
+            'autor' => 'required',
+            'clasif' => 'required|email|unique:users,email,' . $id,
+            'detalles' => 'required',
             'telefono' => 'required',
             'direccion' => 'required',
             'tipo' => 'required',
