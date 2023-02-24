@@ -5,21 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\User;
+use App\Models\Usuarios;
+use App\Models\departamentos;
 
 class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+         $this->middleware('soloadmin',['only'=> ['index']]);
+     }
+    
+    public function index()
     {
-        //
+        $departamentos = departamentos::all();
+        
+
+        return view('cruddepartamento', compact('departamentos'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create()
     {
         //
     }
@@ -27,7 +40,7 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +48,7 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id): Response
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +56,7 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id): Response
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +64,7 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +72,7 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): RedirectResponse
+    public function destroy(string $id)
     {
         //
     }

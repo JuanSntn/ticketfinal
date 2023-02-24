@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Usuarios;
+use App\Models\departamentos;
 use Illuminate\Support\Facades\Hash;
+
 
 
 class HomeController extends Controller
@@ -29,8 +31,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $users = User::all();
 
+        $users = User::all();
+        
 
         return view('home', compact('users'));
     }
@@ -62,6 +65,20 @@ class HomeController extends Controller
 
         return redirect('/home')->with('status', 'Los datos se guardaron correctamente.');
         
+    }
+
+    public function departamento(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nombre' => 'required'
+            
+        ]);
+
+        $name = new departamentos();
+        $name->nombre = $request->input('nombre');
+        $name->save();
+
+        return redirect('/home/departamento/')->with('status', 'Los datos se guardaron correctamente.');
     }
 
     public function show($id)
