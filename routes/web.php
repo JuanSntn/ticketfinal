@@ -19,6 +19,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/users', UserController::class);
 Route::resource('/moders', ModeradorController::class);
 
+
+Route::get('/create', function () {
+    return view('crearuser');
+});
+
+Route::get('/create', function () {
+    return view('crearuser');
+})->name('crearuser');
+
+
 Route::post('/home/create', [HomeController::class, 'store'])
 ->name('home.store');
 
