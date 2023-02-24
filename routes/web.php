@@ -16,3 +16,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/users', UserController::class);
 Route::resource('/moders', ModeradorController::class);
+/* Route::resource('/ticket', TicketController::class); */
+
+Route::get('/ticket', function () {
+    return view('ticket');
+});
+
+Route::get('/asignarticket', function () {
+    return view('asignarticket');
+});
