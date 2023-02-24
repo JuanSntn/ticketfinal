@@ -14,22 +14,7 @@
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nombre
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Email
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Tipo
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Telefono
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Direccion
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Actions 
+                    Nombre del departamento
                 </th>
 
             </tr>
