@@ -43,4 +43,12 @@ Route::post('/home/departamento/create', [HomeController::class, 'departamento']
 Route::get('/home/departamento',[AdminController::class,'index']);
 
 
+Route::delete('/usuario/{id}',[AdminController::class, 'destroy'])->name('borrar.usuario');
+
+
+Route::delete('/ticket/{id}',[HomeController::class, 'destroy'])->name('borrar.ticket');
+
+Route::get('/ticket/{id}/asignar',[HomeController::class,'edit'])->name('editar.ticket');
+
+
 

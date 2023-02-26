@@ -34,7 +34,7 @@ class HomeController extends Controller
     {
 
         $users = tickets::all();
-        
+
 
         return view('home', compact('users'));
     }
@@ -65,14 +65,14 @@ class HomeController extends Controller
             $user->save();
 
         return redirect('/home')->with('status', 'Los datos se guardaron correctamente.');
-        
+
     }
 
     public function departamento(Request $request)
     {
         $validatedData = $request->validate([
             'nombre' => 'required'
-            
+
         ]);
 
         $name = new departamentos();
@@ -91,9 +91,9 @@ class HomeController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = tickets::findOrFail($id);
 
-        return view('users.edit', compact('user'));
+        return view('ticket', compact('user'));
     }
 
     public function update(Request $request, $id)
@@ -107,14 +107,20 @@ class HomeController extends Controller
             'tipo' => 'required',
         ]);
 
-        $user = User::findOrFail($id);
+        $user = tickets::findOrFail($id);
         $user->update($validatedData);
 
-        return redirect('/users')->with('success', 'User updated successfully!');
+        return redirect('/home')->with('success', 'User updated successfully!');
     }
 
     public function destroy($id)
     {
+
+        $user = tickets::findOrFail($id);
+
+        $user->delete();
+
+        return redirect()->route('home')->with('mensaje', 'Usuario eliminado correctamente.');
 
     }
 

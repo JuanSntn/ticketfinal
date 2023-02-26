@@ -20,11 +20,11 @@ class AdminController extends Controller
          $this->middleware('auth');
          $this->middleware('soloadmin',['only'=> ['index']]);
      }
-    
+
     public function index()
     {
         $departamentos = departamentos::all();
-        
+
 
         return view('cruddepartamento', compact('departamentos'));
     }
@@ -74,6 +74,11 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $departamentos = departamentos::findOrFail($id);
+
+        $departamentos->delete();
+
+        return redirect()->route('home')->with('mensaje', 'Usuario eliminado correctamente.');
     }
 }
