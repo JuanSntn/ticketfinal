@@ -56,11 +56,12 @@
                             
                             </div>
                         </div>
-                        <div>
+                        <div class="col-mb-3 content-center ">
 
-                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Descripción') }}</label>
-                            <div>
-                                <textarea name="descripcion" id="" class="w-full"  rows="5"></textarea>
+                        <label for="id_descripcion" class="col-md-4 col-form-label text-md-end">{{ __('Descripción') }}</label>
+                            <div class="row mb-3">
+                                <textarea name="descripcion" id="" class="pl-5 " cols="10"  rows="3"></textarea>
+                             
                             </div>
                         </div>
 
