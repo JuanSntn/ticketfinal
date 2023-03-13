@@ -1,90 +1,39 @@
-@extends('layouts.app')
+@extends('index')
+@section('title','SOPORTE DEL SISTEMA')
 @section('content')
+@section('body')
 
-@vite(['resources/css/app.css','resources/js/app.js'])
+<div class="py-5 "   >
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+        <div class="bg-white overflow-hidden shadow-2xl sm:rounded-lg" >
+    <form action="{{ route('update.ticket',$user->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-<div class="container bg-purple-400">
-    <div class="row justify-content-center bg-purple-400">
-        <div class="col-md-8 ">
-            <div class="card bg-purple-200">
-                <div class="card-header text-center">{{ __('ASIGNAR TICKET') }}</div>
-
-                <div class="card-body  ">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Ticket') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="id_ticket" type="text" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-<!--                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror -->
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="id_departamento" class="col-md-4 col-form-label text-md-end">{{ __('Departamento') }}</label>
-
-                            <div class="col-md-6">
-
-                            <select name="id_departamento" id="">
-                            <option selected >Seleccione Departamento</option>
-                            <option value="1">Compras</option>
-                            <option value="2">Contabilidad</option>
-                            <option value="3">Logística</option>
-                            <option value="4">Producción</option>
-                            <option value="5">Ventas</option>
-                            </select>
-
-                            </div>
-                        </div>
-                        <div class="col-mb-3 content-center ">
-
-                        <label for="id_descripcion" class="col-md-4 col-form-label text-md-end">{{ __('Descripción') }}</label>
-                            <div class="row mb-3">
-                                <textarea name="descripcion" id="" class="pl-5 " cols="10"  rows="3"></textarea>
-
-                            </div>
-                        </div>
+        <div class="mb-6">
+        <label for="cargo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encargado</label>
+        <input name="cargo" value="{{ $user->cargo }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre del encargado" required>
+        </div>
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Departamentos</label>
+        <select name="id_departamentos" value="{{ $user->id_departamentos }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="SIS">Sistemas</option>
+        <option value="RH">RH</option>
+        </select>
+        <div class="flex items-start mb-6">
+        </div>
+        <div class="mb-6">
+            <label for="large-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
+            <input name="descripcion" value="{{ $user->descripcion }}" type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </div>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Asignar</button>
+  </form>
 
 
 
-
-                        <div class="row mb-0">
-                            <div class=" text-center">
-                                <button type="submit" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
-                                    {{ __('Asignar') }}
-                                </button>
-
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 
 
-@endsection
 
+@endsection

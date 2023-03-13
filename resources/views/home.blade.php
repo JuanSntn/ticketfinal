@@ -85,6 +85,14 @@
      </div>
 </div>
 
+<div class="py-5 "   >
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+        <div class="bg-white overflow-hidden shadow-2xl sm:rounded-lg" >
+            
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>

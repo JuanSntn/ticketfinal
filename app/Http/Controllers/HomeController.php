@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\tickets;
 use App\Models\Usuarios;
-use App\Models\departamentos;
+use App\Models\Departamentos;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -82,6 +82,8 @@ class HomeController extends Controller
         return redirect('/home/departamento/')->with('status', 'Los datos se guardaron correctamente.');
     }
 
+
+
     public function show($id)
     {
         $user = User::findOrFail($id);
@@ -96,20 +98,18 @@ class HomeController extends Controller
         return view('ticket', compact('user'));
     }
 
+
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'autor' => 'required',
-            'clasif' => 'required|email|unique:users,email,' . $id,
-            'detalles' => 'required',
-            'telefono' => 'required',
-            'direccion' => 'required',
-            'tipo' => 'required',
+            'cargo' => 'required',
+            'descripcion' => 'required',
         ]);
 
         $user = tickets::findOrFail($id);
         $user->update($validatedData);
-
+        $user->save();
+        
         return redirect('/home')->with('success', 'User updated successfully!');
     }
 

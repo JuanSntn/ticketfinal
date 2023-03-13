@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('fecha')->nullable()->useCurrent();
             $table->string('clasif', 25)->nullable();
             $table->text('detalles')->nullable();
+            $table->text('descripcion')->nullable();
             $table->string('estatus', 25)->nullable();
             $table->string('cargo', 25)->nullable();
             $table->unsignedBigInteger('id_departamentos');

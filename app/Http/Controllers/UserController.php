@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\User;
+use App\Models\tickets;
 use Illuminate\Http\Middleware\SoloModerador;
 
 class UserController extends Controller
@@ -20,7 +22,10 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user');
+        $users = tickets::all();
+
+
+        return view('user', compact('users'));
     }
 
     /**
@@ -50,7 +55,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $tickets = tickets::all();
+
+
+        return view('user', compact('tickets'));
     }
 
     /**
@@ -84,6 +92,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        
+
     }
 }

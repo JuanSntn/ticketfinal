@@ -11,7 +11,7 @@ class departamentos extends Model
 
     protected $fillable = [
         'nombre',
-    
+
     ];
 
 }

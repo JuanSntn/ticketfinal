@@ -15,12 +15,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/users', function () {
+
+
+
+})->middleware('auth');
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::resource('/users', UserController::class);
 Route::resource('/moders', ModeradorController::class);
-
+Route::resource('/users', UserController::class);
 
 Route::get('/create', function () {
     return view('crearuser');
@@ -45,10 +51,10 @@ Route::get('/home/departamento',[AdminController::class,'index']);
 
 Route::delete('/usuario/{id}',[AdminController::class, 'destroy'])->name('borrar.usuario');
 
-
 Route::delete('/ticket/{id}',[HomeController::class, 'destroy'])->name('borrar.ticket');
 
 Route::get('/ticket/{id}/asignar',[HomeController::class,'edit'])->name('editar.ticket');
 
+Route::get('/ticket/{id}/asignar',[HomeController::class,'edit'])->name('editar.ticket');
 
-
+Route::put('/ticket/{id}/actualizar',[HomeController::class,'update'])->name('update.ticket');

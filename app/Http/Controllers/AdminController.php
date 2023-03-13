@@ -29,6 +29,16 @@ class AdminController extends Controller
         return view('cruddepartamento', compact('departamentos'));
     }
 
+
+    public function asignar(Request $request)
+    {
+        $departamentos = departamentos::all();
+
+        return view('editar.ticket', compact('departamentos'));
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      */
