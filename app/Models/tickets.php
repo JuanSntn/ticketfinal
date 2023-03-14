@@ -14,9 +14,17 @@ class tickets extends Model
         'fecha',
         'clasif',
         'detalles',
+        'descripcion',
         'estatus',
+        'cargo',
         'id_departamentos',
-    
+
+
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

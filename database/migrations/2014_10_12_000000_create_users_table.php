@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('tipo')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('telefono', 15)->nullable();;
-            $table->text('direccion')->nullable();;
-            $table->integer('id_departamento')->index('id_departamento')->nullable();;
+            $table->string('telefono', 15)->nullable();
+            $table->text('direccion')->nullable();
+            $table->integer('id_departamento')->index('id_departamento')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

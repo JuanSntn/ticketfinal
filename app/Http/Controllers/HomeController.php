@@ -64,7 +64,7 @@ class HomeController extends Controller
             $user->direccion = $request->input('direccion');
             $user->save();
 
-        return redirect('/home')->with('status', 'Los datos se guardaron correctamente.');
+        return redirect('/create')->with('status', 'Los datos se guardaron correctamente.');
 
     }
 
@@ -101,15 +101,17 @@ class HomeController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'cargo' => 'required',
             'descripcion' => 'required',
         ]);
 
         $user = tickets::findOrFail($id);
-        $user->update($validatedData);
+
+        $user->cargo = $request->cargo;
+        $user->descripcion = $request->descripcion;
         $user->save();
-        
+
         return redirect('/home')->with('success', 'User updated successfully!');
     }
 
