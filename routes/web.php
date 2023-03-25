@@ -6,6 +6,7 @@ use App\Http\Controllers\ModeradorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\EditUserController;
 use App\Models\User;
 use App\Models\departamentos;
 
@@ -56,7 +57,21 @@ Route::delete('/user/{id}',[UsuarioController::class, 'destroy'])->name('borrar.
 
 Route::get('/ticket/{id}/asignar',[HomeController::class,'edit'])->name('editar.ticket');
 
-Route::get('/ticket/{id}/asignar',[HomeController::class,'edit'])->name('editar.ticket');
-
 Route::put('/ticket/{id}/actualizar',[HomeController::class,'update'])->name('update.ticket');
 
+Route::get('/perfiluser',function(){
+    return view('perfiluser');
+});
+
+
+Route::get('/editarUser',  [EditUserController::class, 'viewEditUser'])->name('viewEditUser')->middleware('auth');
+
+Route::get('/usuario/editar',[EditUserController::class,'edit'])->name('editar.usuario');
+
+Route::put('/editarUser/update',[EditUserController::class,'update'])->name('update.usuario');
+
+
+
+
+/* Route::post('/home/create', [HomeController::class, 'store'])
+->name('home.store'); */
