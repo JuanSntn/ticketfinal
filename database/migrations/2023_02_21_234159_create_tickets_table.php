@@ -14,14 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->comment('');
-            $table->integer('id_ticket', true);
-            $table->string('autor', 70);
+            $table->id();
+            $table->string('autor', 70)->nullable();;
             $table->dateTime('fecha')->nullable()->useCurrent();
             $table->string('clasif', 25)->nullable();
             $table->text('detalles')->nullable();
-            $table->string('estatus', 25)->nullable();
-            $table->integer('id_departamento')->index('id_departamento');
+            $table->text('descripcion')->nullable();
+            $table->string('estatus', 25)->nullable()->default('pendiente');
+            $table->string('cargo', 25)->nullable()->default('nadie');
+            $table->unsignedBigInteger('id_departamentos')->nullable()->constrained();;
+            $table->unsignedBigInteger('user_id')->nullable()->constrained();;
+            $table->foreign('id_departamentos')->references('id')->on('departamentos')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->timestamps();
+
+
         });
     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\User;
+use App\Models\tickets;
 use Illuminate\Http\Middleware\SoloModerador;
 
 class UserController extends Controller
@@ -20,7 +22,10 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user');
+        $users = tickets::all();
+
+
+        return view('user', compact('users'));
     }
 
     /**
@@ -39,7 +44,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+
+            'id_departamentos' => 'required',
+            'descripcion' => 'required',
+            'autor'=> 'requiered',
+
+
+        ]);
+
+            $users = new Tickets();
+            $users->descripcion = $request->input('descripcion');
+            $users->autor = auth()->user()->name;
+            $users->id_departamentos = $request->input('id_departamentos');
+            $users->user()->associate(auth()->user());
+
+
+            $users->save();
+
+            return redirect('/users')->with('status', 'Los datos se guardaron correctamente.');
     }
 
     /**
@@ -50,7 +73,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $tickets = tickets::all();
+
+
+        return view('user', compact('tickets'));
     }
 
     /**
@@ -84,6 +110,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
