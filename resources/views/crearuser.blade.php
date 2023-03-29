@@ -12,7 +12,7 @@
             <div class="card-header bg-blue-400 text-center py-2">{{ __('CREAR USUARIO') }}</div>
             <div class="px-60">
             <div class="card-body py-5 ">
-            <form method="POST" action="{{route('ticket.store')}}">
+            <form method="POST" action="{{route('home.store')}}">
             @csrf
             <div class="row mb-3">
                 <label for="name" class="col-md-4 col-form-label text-md-end">Nombre:</label>
