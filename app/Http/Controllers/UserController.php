@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\User;
 use App\Models\tickets;
+use App\Models\Departamentos;
 use Illuminate\Http\Middleware\SoloModerador;
 
 class UserController extends Controller
@@ -23,9 +24,10 @@ class UserController extends Controller
     public function index()
     {
         $users = tickets::all();
+        $departamentos = departamentos::all();
 
 
-        return view('user', compact('users'));
+        return view('user', compact('users','departamentos'));
     }
 
     /**
@@ -76,6 +78,7 @@ class UserController extends Controller
         $tickets = tickets::all();
 
 
+
         return view('user', compact('tickets'));
     }
 
@@ -112,4 +115,6 @@ class UserController extends Controller
     {
 
     }
+
+
 }

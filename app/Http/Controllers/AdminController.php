@@ -15,7 +15,7 @@ class AdminController extends Controller
      * Display a listing of the resource.
      */
 
-     public function __construct()
+    public function __construct()
      {
          $this->middleware('auth');
          $this->middleware('soloadmin',['only'=> ['index']]);
@@ -28,6 +28,7 @@ class AdminController extends Controller
 
         return view('cruddepartamento', compact('departamentos'));
     }
+
 
 
     public function asignar(Request $request)

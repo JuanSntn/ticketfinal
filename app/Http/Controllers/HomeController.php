@@ -94,8 +94,9 @@ class HomeController extends Controller
     public function edit($id)
     {
         $user = tickets::findOrFail($id);
+        $departamentos = departamentos::all();
 
-        return view('ticket', compact('user'));
+        return view('ticket', compact('user','departamentos'));
     }
 
 
