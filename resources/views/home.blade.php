@@ -35,6 +35,12 @@
                                 <th scope="col" class="px-6 py-3">
                                     Departamento
                                 </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Comentarios Cliente
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Comentarios Auxiliar
+                                </th>
 
                             </tr>
                         </thead>
@@ -64,18 +70,24 @@
                                 {{ $user->estatus }}
                                 </td>
                                 <td class="px-6 py-4">
-                                {{ $user->id_departamentos }}
+                                {{ $user->id_departamento }}
+                                </td>
+                                <td class="px-6 py-4">            
+                                {{ $user->comentarioc, 
+                                    Auth::user()->name}}
+                                <input type="text">
+                                <button type="submit" class='text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'>
+                                    Guardar
+                                </button>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <a href="{{ route('editar.ticket', $user->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Asignar</a>
+                                {{ $user->comentarioa}}
+                                <input type="text">
+                                <button type="submit" class='text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'>
+                                    Guardar
+                                </button>
                                 </td>
-                                    <td>
-                                        <form action="{{ route('borrar.ticket', $user->id) }}" method="POST" class="formEliminar">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button onclick="confirmDelete(event)" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Eliminar</button>
-                                        </form>
-                                    </td>
+           
 
                             </tr>
                         @endforeach

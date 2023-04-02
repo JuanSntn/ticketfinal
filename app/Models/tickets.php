@@ -18,6 +18,8 @@ class tickets extends Model
         'estatus',
         'cargo',
         'id_departamentos',
+        'comentarioc',
+        'comentarioa',
 
 
     ];

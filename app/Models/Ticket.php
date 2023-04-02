@@ -17,6 +17,8 @@ protected $fillable=[
     'detalles',
     'estatus',
     'id_departamento',
+    'comentarioc',
+    'comentarioa',
 ]
 
 

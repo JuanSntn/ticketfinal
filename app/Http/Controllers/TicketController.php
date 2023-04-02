@@ -38,6 +38,9 @@ class TicketController extends Controller
             'detalles'=>'required',
             'estatus'=>'required',
             'id_departamento'=>'required',
+            'comentarioc'=>'required',
+            'comentarioa'=>'required',
+       
 
         ]);
 
@@ -51,6 +54,9 @@ class TicketController extends Controller
         $ticket->detalles=$request->input('detalles');
         $ticket->estatus=$request->input('estatus');
         $ticket->id_departamento=$request->input('id_departamento');
+        $ticket->comentarioc=$request->input('comentarioc');
+        $ticket->comentarioa=$request->input('comentarioa');
+
         $ticket->save();
 
         return redirect ('/ticket')->with('status', 'Los datos se guardaron correctamente.')
@@ -93,6 +99,10 @@ class TicketController extends Controller
             'detalles'=>'required',
             'estatus'=>'required',
             'id_departamento'=>'required',
+            'comentarioc'=>'required',
+            'comentarioa'=>'required',
+       
+            
         ]);
 
         $ticket = Ticket::findOrFail($id);
